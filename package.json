@@ -16,7 +16,7 @@
     "lucide-react": "^0.316.0",
     "mongoose": "^8.1.1",
     "next": "14.1.0",
-    "next-auth": "^4.24.5",
+    "next-auth": "^5.0.0-beta.5",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.1",

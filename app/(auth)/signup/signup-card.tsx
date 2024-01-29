@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { signIn } from "@/auth";
 
 export default function SignupCard() {
+	async function authAction() {
+		"use server"
+		await signIn("github");
+	}
 	return (
 		<>
-			<form className='space-y-4'>
+			<form action={authAction} className='space-y-4'>
 				<SignUpButton />
 			</form>
 			<div className='mt-4 text-center text-[13px]'>

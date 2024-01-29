@@ -3,6 +3,7 @@ import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { LogOut } from "lucide-react";
+import LogoutButton from "./logoutButton";
 
 const Navbar = () => {
   return (
@@ -21,11 +22,7 @@ const Navbar = () => {
         <Button className='bg-black text-white rounded-full p-3 text-xs md:text-sm'>Watch tutorial</Button>
       </div>
       <div className='flex space-x-2'>
-        <Link href='/logout' passHref>
-          <Button className='bg-black text-white rounded-full p-3 text-xs md:text-sm'>
-            <LogOut className='cursor-pointer' />
-          </Button>
-        </Link>
+        <LogoutButton />
       </div>
     </header>
   );

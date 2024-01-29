@@ -1,10 +1,12 @@
+import { auth } from "@/auth";
 import Navbar from "@/components/shared/navbar";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function Home() {
-  const session = false;
+  const session = await auth();
+  console.log(session);
 
   return (
     <div className='bg-gradient-to-b from-[#fffc00] via-[#fffa00] to-[#fff700]'>

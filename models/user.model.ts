@@ -3,7 +3,7 @@ import mongoose, { Model } from "mongoose";
 
 export interface IUser {
     username: string;
-    FullName: string;
+    fullName: string;
     email: string;
     avatar?: string;
 }
@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema<UserModel>(
       required: true,
       unique: true,
     },
-    FullName: {
+    fullName: {
       type: String,
       required: true,
     },
