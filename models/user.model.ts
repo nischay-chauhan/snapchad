@@ -1,8 +1,18 @@
 import { Fullscreen } from "lucide-react";
-import mongoose from "mongoose";
-import { unique } from "next/dist/build/utils";
+import mongoose, { Model } from "mongoose";
 
-const userSchema = new mongoose.Schema(
+export interface IUser {
+    username: string;
+    FullName: string;
+    email: string;
+    avatar?: string;
+}
+export interface UserModel extends IUser, mongoose.Document {
+    createdAt : Date,
+    updatedAt : Date
+}
+
+const userSchema = new mongoose.Schema<UserModel>(
   {
     username: {
       type: String,
@@ -25,3 +35,7 @@ const userSchema = new mongoose.Schema(
   },
   { timestamps: true }
 );
+
+const User:Model<UserModel> = mongoose.models?.User || mongoose.model("User", userSchema);
+
+export default User
