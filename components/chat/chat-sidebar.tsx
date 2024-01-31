@@ -4,6 +4,7 @@ import { Avatar, AvatarImage } from "../ui/avatar";
 import { Button } from "../ui/button";
 import Image from "next/image";
 import { auth } from "@/auth";
+import Chats from "./Chats";
 
 const ChatSideBar = async () => {
 	const session = await auth();
@@ -32,6 +33,7 @@ const ChatSideBar = async () => {
 					</div>
 				</div>
 			</div>
+			<Chats />
 		</aside>
 	);
 };
