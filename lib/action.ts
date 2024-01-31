@@ -1,5 +1,5 @@
 "use server"
-import { signIn } from "@/auth";
+import { signIn, signOut } from "@/auth";
 
 export async function authAction() {
     try{    
@@ -11,4 +11,8 @@ export async function authAction() {
       return error.message
     }
   
+}
+
+export   async function logoutAction(){
+    await signOut()
 }

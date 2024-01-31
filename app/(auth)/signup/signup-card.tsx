@@ -1,13 +1,12 @@
+"use client";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { signIn } from "@/auth";
+import { authAction } from "@/lib/action";
+import { useFormState, useFormStatus } from "react-dom";
 
 export default function SignupCard() {
-	async function authAction() {
-		"use server"
-		await signIn("github");
-	}
+const[errorMessage , dispatch]	=useFormState(authAction , "")
 	return (
 		<>
 			<form action={authAction} className='space-y-4'>
@@ -24,8 +23,9 @@ export default function SignupCard() {
 }
 
 function SignUpButton() {
+	const {pending} = useFormStatus()
 	return (
-		<Button className='w-full flex gap-2'>
+		<Button className='w-full flex gap-2' disabled={pending}>
 			<Image src={"/github.svg"} width={20} height={20} alt='Github logo' /> Sign up with Github
 		</Button>
 	);
