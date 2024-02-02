@@ -5,6 +5,9 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 import { auth } from "@/auth";
 import Chats from "./Chats";
+import { Suspense } from "react";
+import { ChatsSkeleton } from "../skeletons/chats-skeleton";
+
 
 const ChatSideBar = async () => {
 	const session = await auth();
@@ -33,7 +36,10 @@ const ChatSideBar = async () => {
 					</div>
 				</div>
 			</div>
+			<Suspense fallback={<ChatsSkeleton />}>
 			<Chats />
+			</Suspense>
+			
 		</aside>
 	);
 };

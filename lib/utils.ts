@@ -14,3 +14,10 @@ export const readFileAsDataURL = (file: File | Blob): Promise<string> => {
 		reader.readAsDataURL(file);
 	});
 };
+
+export const formatData = (inputData : Date): string => {
+	const data = new Date(inputData);
+	const option : Intl.DateTimeFormatOptions = {month : "short", day : "numeric", };
+	const formattedDate : string = data.toLocaleDateString("en-US", option);
+	return formattedDate
+}
