@@ -1,8 +1,10 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
+import { IUser } from "@/models/user.model";
 
-const ChatUserInfo = () => {
-	const userFullName = "John Doe";
-	const userAvatar = "";
+
+const ChatUserInfo = ({ userData }: { userData: IUser }) => {
+	const userFullName = userData.fullName;
+	const userAvatar = userData.avatar;
 
 	return (
 		<div className='cursor-pointer bg-sigButtonSecondary hover:bg-sigButtonSecondaryHover rounded-full flex gap-2 items-center py-1 px-3 text-white font-semibold'>
