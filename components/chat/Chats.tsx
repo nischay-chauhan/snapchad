@@ -5,8 +5,7 @@ import Chat from "./Chat";
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 const Chats = async () => {
 	const session = await auth()
-	await sleep(3000)
-    console.log(session)
+    // console.log(session)
 	const chats = session?.user ? await getUsersForSidebar(session.user._id) : [];
     console.log(chats)
 	return (
