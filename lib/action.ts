@@ -6,6 +6,7 @@ import { Content } from "next/font/google";
 import Message, { IMessageDocument } from "@/models/message.model";
 import Chat, { IChatDocument } from "@/models/chat.model";
 import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -72,3 +73,23 @@ export const sendMessageAction = async(recieverId:string,content:string , messag
 }
 
 }
+
+export const deleteChatAction = async (userId: string) => {
+	try {
+		await connectToMongoDB();
+		const { user } = (await auth()) || {};
+		if (!user) return;
+		const chat = await Chat.findOne({ participants: { $all: [user._id, userId] } });
+		if (!chat) return;
+
+		const messageIds = chat.messages.map((messageId) => messageId.toString());
+		await Message.deleteMany({ _id: { $in: messageIds } });
+		await Chat.deleteOne({ _id: chat._id });
+
+		revalidatePath("/chat/[id]", "page");
+	} catch (error: any) {
+		console.error("Error in deleteChat:", error.message);
+		throw error;
+	}
+	redirect("/chat");
+};
