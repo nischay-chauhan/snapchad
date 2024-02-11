@@ -37,7 +37,7 @@ export const getUsersForSidebar = async (authUserId: string) => {
 
 		return usersInfo;
 	} catch (error) {
-		console.log("Error in getUsersForSidebar: ", error);
+		// console.log("Error in getUsersForSidebar: ", error);
 		throw error;
 	}
 };
@@ -50,7 +50,7 @@ export const getUserProfile = async (userId: string) => {
 		if (!user) throw new Error("User not found");
 		return user;
 	} catch (error) {
-		console.log("Error in getUserProfile: ", error);
+		// console.log("Error in getUserProfile: ", error);
 		throw error;
 	}
 };
@@ -76,7 +76,7 @@ export const getMessages = async (authUserId: string, otherUserId: string) => {
 		const messages = chat.messages;
 		return JSON.parse(JSON.stringify(messages));
 	} catch (error) {
-		console.log("Error in getMessages: ", error);
+		// console.log("Error in getMessages: ", error);
 		throw error;
 	}
 };

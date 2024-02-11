@@ -29,7 +29,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 				throw new Error("Invalid session");
 			  }
 			} catch (error) {
-			  console.log(error);
+			//   console.log(error);
 			  throw new Error("Invalid session");
 			}
 		  },
@@ -38,7 +38,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 			if (account?.provider === "github") {
 			  await connectToMongoDB();
 		  
-			  console.log("GitHub profile data:", profile); 
+			//   console.log("GitHub profile data:", profile); 
 		  
 			  try {
 				const user = await User.findOne({ email: profile?.email });
@@ -54,7 +54,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 				}
 				return true;
 			  } catch (error) {
-				console.log(error);
+				// console.log(error);
 				return false;
 			  }
 			}

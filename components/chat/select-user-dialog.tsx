@@ -30,7 +30,7 @@ const SelectUserDialog = ({ selectedFile, onClose, onPrev }: SelectUserDialogPro
 				const data = await res.json();
 				setUsers(data);
 			} catch (error) {
-				console.log(error);
+				// console.log(error);
 			} finally {
 				setIsFetchingUsers(false);
 			}
@@ -47,7 +47,7 @@ const SelectUserDialog = ({ selectedFile, onClose, onPrev }: SelectUserDialogPro
 			await sendMessageAction(selectedUser?._id, selectedFile, "image");
 			router.push(`/chat/${selectedUser?._id}`);
 		} catch (error) {
-			console.log(error);
+			// console.log(error);
 		} finally {
 			setIsSendingMessage(false);
 		}

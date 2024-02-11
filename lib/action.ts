@@ -70,7 +70,7 @@ export const sendMessageAction = async(recieverId:string,content:string , messag
     revalidatePath(`/chat/${recieverId}`)
     return newMessage
 }catch(error : any){
-  console.error("Error in sendMessageAction", error.message)
+  // console.error("Error in sendMessageAction", error.message)
   throw error
 }
 
@@ -90,7 +90,7 @@ export const deleteChatAction = async (userId: string) => {
 
 		revalidatePath("/chat/[id]", "page");
 	} catch (error: any) {
-		console.error("Error in deleteChat:", error.message);
+		// console.error("Error in deleteChat:", error.message);
 		throw error;
 	}
 	redirect("/chat");

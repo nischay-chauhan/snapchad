@@ -17,14 +17,14 @@ const SendMsgInput = () => {
     const handleSendMessage = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         setIsLoading(true)
-        console.log(messageContent)
+        // console.log(messageContent)
         try{
            const response = await sendMessageAction(recieverId , messageContent , "text")
             setMessageContent("")
-            console.log("REsponse after sneding" , response)
+            // console.log("REsponse after sneding" , response)
 
         }catch(error){
-            console.log(error)
+            // console.log(error)
         }finally{
             setIsLoading(false)
         }

@@ -14,7 +14,7 @@ export const GET = async () => {
         const filteredUsers = users.filter((user) => user._id.toString() !== session.user.id?.toString());
         return NextResponse.json(filteredUsers);
     }catch(error){
-        console.log("Error get0uer route handlers")
+        // console.log("Error get0uer route handlers")
         throw error;
     }
 }
