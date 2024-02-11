@@ -1,8 +1,8 @@
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
-import { IUser } from "@/models/user.model";
+import { UserModel } from "@/models/user.model";
 
 
-const ChatUserInfo = ({ userData }: { userData: IUser }) => {
+const ChatUserInfo = ({ userData }: { userData: UserModel }) => {
 	const userFullName = userData.fullName;
 	const userAvatar = userData.avatar;
 

@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 import { useRouter } from "next/navigation";
 import { sendMessageAction } from "@/lib/action";
-import { IUser } from "@/models/user.model";
+import {  UserModel } from "@/models/user.model";
 
 type SelectUserDialogProps = {
 	selectedFile: string;
@@ -17,7 +17,7 @@ type SelectUserDialogProps = {
 
 const SelectUserDialog = ({ selectedFile, onClose, onPrev }: SelectUserDialogProps) => {
 	const [users, setUsers] = useState([]);
-	const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
+	const [selectedUser, setSelectedUser] = useState<UserModel | null>(null);
 	const [isSendingMessage, setIsSendingMessage] = useState(false);
 	const [isFetchingUsers, setIsFetchingUsers] = useState(false);
 	const router = useRouter();
@@ -39,7 +39,7 @@ const SelectUserDialog = ({ selectedFile, onClose, onPrev }: SelectUserDialogPro
 		getUsers();
 	}, []);
 
-	const handleSelectUser = (user: IUser) => setSelectedUser(user);
+	const handleSelectUser = (user: UserModel) => setSelectedUser(user);
 
 	const handleSendMessage = async () => {
 		setIsSendingMessage(true);
@@ -69,7 +69,7 @@ const SelectUserDialog = ({ selectedFile, onClose, onPrev }: SelectUserDialogPro
 						/>
 					</div>
 					<p className='font-semibold py-2'>Chats:</p>
-					{users.map((user: IUser) => (
+					{users.map((user: UserModel) => (
 						<div key={user._id} className='flex flex-col max-h-48 bg-sigSurface rounded-md overflow-auto'>
 							<UserCard user={user} handleSelectUser={handleSelectUser} selectedUser={selectedUser} />
 						</div>

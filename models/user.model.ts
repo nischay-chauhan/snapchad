@@ -7,6 +7,7 @@ export interface IUser {
     email: string;
     avatar?: string;
 }
+
 export interface UserModel extends IUser, mongoose.Document {
     createdAt : Date,
     updatedAt : Date

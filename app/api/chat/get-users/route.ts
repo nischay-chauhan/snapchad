@@ -1,6 +1,6 @@
 import { auth } from "@/auth"
 import { connectToMongoDB } from "@/lib/db";
-import User, { IUser } from "@/models/user.model";
+import User, { UserModel } from "@/models/user.model";
 import { NextResponse } from "next/server";
 
 
@@ -10,7 +10,7 @@ export const GET = async () => {
         if(!session) return;
         await connectToMongoDB();
 
-        const users:IUser[] = await User.find();
+        const users:UserModel[] = await User.find();
         const filteredUsers = users.filter((user) => user._id.toString() !== session.user.id?.toString());
         return NextResponse.json(filteredUsers);
     }catch(error){

@@ -1,10 +1,10 @@
-import { IUser } from "@/models/user.model";
+import {  UserModel } from "@/models/user.model";
 import { Avatar, AvatarImage } from "../ui/avatar";
 
 type UserCardProps = {
-	user: IUser;
-	handleSelectUser: (user: IUser) => void;
-	selectedUser: IUser | null;
+	user: UserModel;
+	handleSelectUser: (user: UserModel) => void;
+	selectedUser: UserModel | null;
 };
 const UserCard = ({ user, handleSelectUser, selectedUser }: UserCardProps) => {
 	const isSelected = selectedUser?._id === user._id;

@@ -5,11 +5,11 @@ import mongoose, {
   Schema,
   Types,
 } from "mongoose";
-import { IUser } from "./user.model";
+import {  UserModel } from "./user.model";
 
 export interface IMessage {
-  sender: Types.ObjectId | PopulatedDoc<IUser>;
-  receiver: Types.ObjectId | PopulatedDoc<IUser>;
+  sender: Types.ObjectId | PopulatedDoc<UserModel>;
+  receiver: Types.ObjectId | PopulatedDoc<UserModel>;
   content: string;
   messageType: "text" | "image";
   opened: boolean;

@@ -1,5 +1,5 @@
 import Message, { IMessageDocument } from "@/models/message.model";
-import User, { IUser } from "@/models/user.model"
+import User, { UserModel } from "@/models/user.model"
 import { unstable_noStore as noStore } from "next/cache";
 import { connectToMongoDB } from "./db";
 import Chat, { IChatDocument } from "@/models/chat.model";
@@ -7,7 +7,7 @@ import Chat, { IChatDocument } from "@/models/chat.model";
 export const getUsersForSidebar = async (authUserId: string) => {
 	noStore();
 	try {
-		const allUsers: IUser[] = await User.find({ _id: { $ne: authUserId } });
+		const allUsers: UserModel[] = await User.find({ _id: { $ne: authUserId } });
 		const usersInfo = await Promise.all(
 			allUsers.map(async (user) => {
 				const lastMessage: IMessageDocument | null = await Message.findOne({
@@ -46,7 +46,7 @@ export const getUserProfile = async (userId: string) => {
 	noStore();
 	try {
 		await connectToMongoDB();
-		const user: IUser | null = await User.findById(userId);
+		const user: UserModel | null = await User.findById(userId);
 		if (!user) throw new Error("User not found");
 		return user;
 	} catch (error) {
