@@ -14,13 +14,13 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
 	callbacks: {
 		async session({ session }) {
 			try {
-			  console.log("Session data:", session); 
+			//   console.log("Session data:", session); 
 			  await connectToMongoDB();
 			  if (session.user) {
 				const user = await User.findOne({ email: session.user.email });
 				if (user) {
 				  session.user._id = user._id;
-				  console.log("Updated session data:", session); 
+				//   console.log("Updated session data:", session); 
 				  return session;
 				} else {
 				  throw new Error("User not found");

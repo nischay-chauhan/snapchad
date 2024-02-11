@@ -7,6 +7,7 @@ import Message, { IMessageDocument } from "@/models/message.model";
 import Chat, { IChatDocument } from "@/models/chat.model";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { unstable_noStore as nostore } from "next/cache";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -31,6 +32,7 @@ export   async function logoutAction(){
 }
 
 export const sendMessageAction = async(recieverId:string,content:string , messageType : "image" | "text") => {
+  nostore()
   try{
     const session = await auth()
     if(!session) return;
