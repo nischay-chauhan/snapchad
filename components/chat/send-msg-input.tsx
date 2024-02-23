@@ -4,15 +4,16 @@ import { EmojiPopover } from "./emoji-popover";
 import { TextMessageSent } from "../svgs/chatSvg";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { sendMessageAction } from "@/lib/action";
 import { useParams } from "next/navigation";
 import { Loader2 } from "lucide-react";
+import { readFileAsDataURL } from "@/lib/utils";
 
 const SendMsgInput = () => {
     const [messageContent , setMessageContent] = useState('')
     const [isLoading , setIsLoading] = useState(false)
-    const params = useParams<{ id: string}>()
+	const params = useParams<{ id: string}>()
     const recieverId = params.id
     const handleSendMessage = async(e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -39,7 +40,7 @@ const SendMsgInput = () => {
 					width={0}
 					style={{ width: "20px", height: "auto" }}
 					alt='camera icon'
-				/>
+				/>	
 			</div>
 			<form onSubmit={handleSendMessage} className='flex-1 flex  items-center gap-1 bg-sigBackgroundSecondaryHover rounded-full border   border-sigColorBgBorder'>
 				<Input
